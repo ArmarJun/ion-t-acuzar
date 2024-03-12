@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar,IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/react';
 import ExploreContainer from '../components/ExploreContainer';
 import './Tab1.css';
 
@@ -7,7 +7,7 @@ const Tab1: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Tab 1</IonTitle>
+          <IonTitle>Black Clover</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
@@ -16,7 +16,18 @@ const Tab1: React.FC = () => {
             <IonTitle size="large">Tab 1</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer name="Tab 1 page" />
+        <IonCard>
+      <img alt="Silhouette of mountains" src="src/img/profile.PNG" />
+      <IonCardHeader>
+        <IonCardTitle>Noelle Silva</IonCardTitle>
+        <IonCardSubtitle>It's not as if we can win as long as we don't give up.</IonCardSubtitle>
+      </IonCardHeader>
+
+      <IonCardContent></IonCardContent>
+    </IonCard>
+
+
+        
       </IonContent>
     </IonPage>
   );
