@@ -1,29 +1,28 @@
-// Calculator.tsx
 import React, { useState } from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonGrid, IonRow, IonCol, IonInput } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonInput, IonItem, IonLabel } from '@ionic/react';
 import './Calculator.css';
 
 const Calculator: React.FC = () => {
-  const [input, setInput] = useState<string>('');
+  const [display, setDisplay] = useState('');
 
-  const handleInput = (value: string) => {
-    setInput(input + value);
+  const clearDisplay = () => {
+    setDisplay('');
   };
 
-  const handleClear = () => {
-    setInput('');
+  const appendToDisplay = (value: string) => {
+    setDisplay((prevDisplay) => prevDisplay + value);
   };
 
-  const handleDelete = () => {
-    setInput(input.slice(0, -1));
-  };
-
-  const handleCalculate = () => {
+  const calculate = () => {
     try {
-      setInput(eval(input).toString());
+      setDisplay(eval(display));
     } catch (error) {
-      setInput('Error');
+      setDisplay('Error');
     }
+  };
+
+  const goBack = () => {
+    window.location.href = '/';
   };
 
   return (
@@ -33,84 +32,35 @@ const Calculator: React.FC = () => {
           <IonTitle>Calculator</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen className="ion-padding" style={{ backgroundColor: 'light' }}>
-        <IonGrid>
-          <IonRow>
-            <IonCol size="12">
-              <IonInput style={{ fontSize: '50px' }} value={input} readonly={true} className="ion-text-right" />
-            </IonCol>
-          </IonRow>
-
-          <IonRow>
-            <IonCol size="6">
-              <IonButton id="btns" expand="full" color="danger" onClick={handleClear}>C</IonButton>
-            </IonCol>
-            <IonCol size="6">
-              <IonButton id="btns" expand="full" color="success" onClick={handleDelete}>DEL</IonButton>
-            </IonCol>
-          </IonRow>
-          <IonRow>
-            <IonCol size="3">
-              <IonButton id="btns" expand="full" color="warning" onClick={() => handleInput('7')}>7</IonButton>
-            </IonCol>
-            <IonCol size="3">
-              <IonButton id="btns" expand="full" color="warning" onClick={() => handleInput('8')}>8</IonButton>
-            </IonCol>
-            <IonCol size="3">
-              <IonButton id="btns" expand="full" color="warning" onClick={() => handleInput('9')}>9</IonButton>
-            </IonCol>
-            <IonCol size="3">
-              <IonButton id="btns" expand="full" color="primary" onClick={() => handleInput('/')}>/</IonButton>
-            </IonCol>
-          </IonRow>
-          <IonRow>
-            <IonCol size="3">
-              <IonButton id="btns" expand="full" color="warning" onClick={() => handleInput('4')}>4</IonButton>
-            </IonCol>
-            <IonCol size="3">
-              <IonButton id="btns" expand="full" color="warning" onClick={() => handleInput('5')}>5</IonButton>
-            </IonCol>
-            <IonCol size="3">
-              <IonButton id="btns" expand="full" color="warning" onClick={() => handleInput('6')}>6</IonButton>
-            </IonCol>
-            <IonCol size="3">
-              <IonButton id="btns" expand="full" color="primary" onClick={() => handleInput('*')}>*</IonButton>
-            </IonCol>
-          </IonRow>
-          <IonRow>
-            <IonCol size="3">
-              <IonButton id="btns" expand="full" color="warning" onClick={() => handleInput('1')}>1</IonButton>
-            </IonCol>
-            <IonCol size="3">
-              <IonButton id="btns" expand="full" color="warning" onClick={() => handleInput('2')}>2</IonButton>
-            </IonCol>
-            <IonCol size="3">
-              <IonButton id="btns" expand="full" color="warning" onClick={() => handleInput('3')}>3</IonButton>
-            </IonCol>
-            <IonCol size="3">
-              <IonButton id="btns" expand="full" color="primary" onClick={() => handleInput('-')}>-</IonButton>
-            </IonCol>
-          </IonRow>
-          <IonRow>
-            <IonCol size="3">
-              <IonButton id="btns" expand="full" color="primary" onClick={() => handleInput('.')}>.</IonButton>
-            </IonCol>
-            <IonCol size="3">
-              <IonButton id="btns" expand="full" color="warning" onClick={() => handleInput('0')}>0</IonButton>
-            </IonCol>
-            <IonCol size="3">
-              <IonButton id="btns" expand="full" color="warning" onClick={() => handleInput('00')}>00</IonButton>
-            </IonCol>
-            <IonCol size="3">
-              <IonButton id="btns" expand="full" color="primary" onClick={() => handleInput('+')}>+</IonButton>
-            </IonCol>
-          </IonRow>
-          <IonRow>
-            <IonCol size="12">
-              <IonButton id="btns" expand="full" color="secondary" onClick={handleCalculate}>=</IonButton>
-            </IonCol>
-          </IonRow>
-        </IonGrid>
+      <IonContent>
+        <IonItem>
+        <IonInput value={display} placeholder="0"readonly={true}className="display"/>
+        </IonItem>
+        <div className="buttons">
+          
+          <IonButton onClick={() => appendToDisplay('7')}>7</IonButton>
+          <IonButton onClick={() => appendToDisplay('8')}>8</IonButton>
+          <IonButton onClick={() => appendToDisplay('9')}>9</IonButton>
+          <IonButton onClick={clearDisplay}>C</IonButton>
+          
+          <IonButton onClick={() => appendToDisplay('4')}>4</IonButton>
+          <IonButton onClick={() => appendToDisplay('5')}>5</IonButton>
+          <IonButton onClick={() => appendToDisplay('6')}>6</IonButton>
+          <IonButton onClick={() => appendToDisplay('/')}>/</IonButton>
+         
+          <IonButton onClick={() => appendToDisplay('1')}>1</IonButton>
+          <IonButton onClick={() => appendToDisplay('2')}>2</IonButton>
+          <IonButton onClick={() => appendToDisplay('3')}>3</IonButton>
+          <IonButton onClick={() => appendToDisplay('*')}>*</IonButton>
+          
+          <IonButton onClick={() => appendToDisplay('0')}>0</IonButton>
+          <IonButton onClick={() => appendToDisplay('-')}>-</IonButton>
+          
+          <IonButton onClick={calculate}>=</IonButton>
+          <IonButton onClick={() => appendToDisplay('+')}>+</IonButton>
+          <IonButton onClick={() => appendToDisplay('.')}>.</IonButton>
+        </div>
+        <IonButton onClick={goBack}>Back</IonButton>
       </IonContent>
     </IonPage>
   );
