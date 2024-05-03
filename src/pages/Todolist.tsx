@@ -1,105 +1,73 @@
 import React, { useState } from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonGrid, IonRow, IonCol, IonBackButton, IonButtons, IonList, IonItem, IonLabel, IonCheckbox, IonInput, IonIcon } from '@ionic/react';
-import { trashOutline, createOutline } from 'ionicons/icons';
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItem, IonCheckbox, IonLabel, IonInput, IonButton, IonIcon } from '@ionic/react';
+import { arrowBackOutline, trashOutline } from 'ionicons/icons';
+import './Todolist.css';
 
-const TodoList: React.FC = () => {
-  const [todos, setTodos] = useState([]);
-  const [newTodoText, setNewTodoText] = useState('');
+const Todolist: React.FC = () => {
+  const [tasks, setTasks] = useState<string[]>([]);
+  const [taskInput, setTaskInput] = useState<string>('');
 
-  const toggleTodo = (id: number) => {
-    setTodos(prevTodos =>
-      prevTodos.map(todo =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
-      )
-    );
-  };
-
-  const addTodo = () => {
-    if (newTodoText.trim() !== '') {
-      setTodos(prevTodos => [
-        ...prevTodos,
-        {
-          id: prevTodos.length + 1,
-          text: newTodoText,
-          completed: false
-        }
-      ]);
-      setNewTodoText('');
+  const addTask = () => {
+    if (taskInput.trim() !== '') {
+      setTasks([...tasks, taskInput]);
+      setTaskInput('');
     }
   };
 
-  const deleteTodo = (id: number) => {
-    setTodos(prevTodos => prevTodos.filter(todo => todo.id !== id));
+  const handleTaskInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTaskInput(e.target.value);
   };
 
-  const editTodo = (id: number, newText: string) => {
-    setTodos(prevTodos =>
-      prevTodos.map(todo =>
-        todo.id === id ? { ...todo, text: newText } : todo
-      )
-    );
+  const handleCheckboxChange = (index: number) => {
+    const updatedTasks = [...tasks];
+    updatedTasks[index] = tasks[index] + ' (Completed)';
+    setTasks(updatedTasks);
+  };
+
+  const deleteTask = (index: number) => {
+    const updatedTasks = [...tasks];
+    updatedTasks.splice(index, 1);
+    setTasks(updatedTasks);
+  };
+
+  const clearTasks = () => {
+    setTasks([]);
   };
 
   const goBack = () => {
     window.location.href = '/';
-  };n
+  };
 
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>TodoList</IonTitle>
+          
+          <IonTitle>To-Do List</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen className="ion-padding" style={{ backgroundColor: 'Grey' }}>
-        <IonGrid>
-          <IonRow className="ion-align-items-center">
-            <IonCol size="12" className="ion-text-center">
-              <h1>TodoList</h1>
-            </IonCol>
-          </IonRow>
-          <IonRow>
-            <IonCol size="12">
-              <IonInput
-                placeholder="Enter a task"
-                value={newTodoText}
-                onIonChange={(e) => setNewTodoText(e.detail.value!)}
-                style={{ marginBottom: '10px' }}
-              />
-              <IonButton
-                expand="block"
-                onClick={addTodo}
-                style={{ marginBottom: '10px', background: '#4CAF50', color: 'Black' }}
-              >
-                Add Task
+      <IonContent fullscreen>
+        <IonList>
+          {tasks.map((task, index) => (
+            <IonItem key={index} className="task-item">
+              
+              <IonLabel className={task.endsWith('(Completed)') ? 'completed-task' : ''}>{task}</IonLabel>
+              <IonButton slot="end" fill="clear" onClick={() => deleteTask(index)}>
+                <IonIcon icon={trashOutline} />
               </IonButton>
-              <IonButton onClick={goBack}>Back</IonButton>
-            </IonCol>
-          </IonRow>
-          <IonRow>
-            <IonCol size="12">
-              <IonList>
-                {todos.map(todo => (
-                  <IonItem key={todo.id}>
-                    <IonLabel>{todo.text}</IonLabel>
-                    <div className="ion-text-end">
-                      <IonButton fill="clear" onClick={() => editTodo(todo.id, prompt("Edit task:", todo.text))}>
-                        <IonIcon icon={createOutline} />
-                      </IonButton>
-                      <IonButton fill="clear" onClick={() => deleteTodo(todo.id)}>
-                        <IonIcon icon={trashOutline} />
-                      </IonButton>
-                    </div>
-                    <IonCheckbox slot="start" checked={todo.completed} onIonChange={() => toggleTodo(todo.id)} />
-                  </IonItem>
-                ))}
-              </IonList>
-            </IonCol>
-          </IonRow>
-        </IonGrid>
+            </IonItem>
+          ))}
+        </IonList>
+        <div className="add-task-container">
+          <IonInput value={taskInput} placeholder="Enter task" onIonChange={handleTaskInputChange} className="add-task-input"></IonInput>
+          <IonButton slot="end" onClick={addTask} className="add-task-button">Add</IonButton>
+         
+        </div>
+        <IonButton expand="block" onClick={clearTasks}>Clear All Tasks</IonButton>
+        <IonButton onClick={goBack}>Back</IonButton>
       </IonContent>
     </IonPage>
   );
 };
 
-export default TodoList;
+export default Todolist;
