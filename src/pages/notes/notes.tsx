@@ -153,10 +153,13 @@ const goBack = () => {
   return (
     <IonPage>
       <IonHeader>
+      <IonButtons slot='start'>
+              <IonBackButton defaultHref='/app/home'/>
+           </IonButtons>
         <IonToolbar>
           <IonTitle>Notes</IonTitle>
         </IonToolbar>
-        <IonButton onClick={goBack}>Back</IonButton>
+        
       </IonHeader>
       <IonContent className="ion-padding">
         <IonCard>

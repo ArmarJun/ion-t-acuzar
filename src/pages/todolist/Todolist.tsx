@@ -168,10 +168,12 @@ const TodoList: React.FC = () => {
     <IonPage className="home-page">
       <IonHeader>
         <IonToolbar>
-          
+        <IonButtons slot='start'>
+              <IonBackButton defaultHref='/app/home'/>
+           </IonButtons>
           <IonTitle>Todo</IonTitle>
         </IonToolbar>
-        <IonButton onClick={goBack}>Back</IonButton>
+      
       </IonHeader>
       <IonContent className="ion-padding">
         <IonCard id="card_body">

@@ -1,44 +1,57 @@
-// src/ClickCounter.tsx
+import { 
+  //Page defailts
+  IonContent, IonHeader, IonPage, IonTitle, IonToolbar,
+  //Ionic Card
+  IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle,
+  //Ionic buttons
+  IonButton, IonBackButton, IonButtons, IonIcon 
+} from '@ionic/react';
+//Ionicons
+import { arrowUndo,caretBack} from 'ionicons/icons';
 
 import React, { useState } from 'react';
-import './Click_counter.css'; // Import CSS file
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonButtons, IonBackButton } from '@ionic/react';
+import './Click_counter.css';
+
 
 const ClickCounter: React.FC = () => {
-  const [count, setCount] = useState(0);
+  const [clickCount, setClickCount] = useState(0);
 
-  const incrementCount = () => {
-    setCount(count + 1);
+  const handleClick = () => {
+    setClickCount(clickCount + 1);
   };
-
-  const resetCount = () => {
-    setCount(0);
+ 
+  const handleClear = () => {
+    setClickCount(0);
   };
-
-  const goBack = () => {
-    window.location.href = '/';
-  };
-
+  
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonButtons slot="start">
-            {/* Add any content if needed */}
-          </IonButtons>
+        <IonButtons slot='start'>
+            <IonBackButton defaultHref="/ion-t-acuzar/home" />
+           </IonButtons>
           <IonTitle>Click Counter</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent className="ion-padding container">
-        <h1 className="counter">Count: {count}</h1>
-        
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-  <IonButton className="button" onClick={incrementCount}>Click me</IonButton>
-  <IonButton className="button" onClick={resetCount}>Reset</IonButton>
-</div>
-<div style={{ textAlign: 'center', marginTop: '10px' }}>
-  <IonButton className="button" onClick={goBack}>Back</IonButton>
-</div>
+      <IonContent fullscreen>
+        <IonHeader collapse="condense">
+          <IonToolbar>
+            <IonTitle size="large">Click Counter</IonTitle>
+          </IonToolbar>
+        </IonHeader>
+
+          <IonCard className="cc-card">
+            <IonCardHeader>
+              {/*
+              <IonCardTitle>Card Title</IonCardTitle>
+              <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
+              */}
+            </IonCardHeader>
+            <p className="cc-output">{clickCount}</p>
+            <IonButton onClick={handleClick}>Click Me</IonButton>
+            <IonButton onClick={handleClear} fill="clear">Clear</IonButton>
+          </IonCard>
 
       </IonContent>
     </IonPage>

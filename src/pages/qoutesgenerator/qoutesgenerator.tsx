@@ -207,10 +207,12 @@ const goBack = () => {
     <IonPage className="home-page">
       <IonHeader>
         <IonToolbar>
-          
+          <IonButtons slot='start'>
+              <IonBackButton defaultHref='/app/home'/>
+           </IonButtons>
           <IonTitle>Quotes Generator</IonTitle>
         </IonToolbar>
-        <IonButton onClick={goBack}>Back</IonButton>
+        
       </IonHeader>
       <IonContent className="ion-padding">
         <IonCard id="card_body">

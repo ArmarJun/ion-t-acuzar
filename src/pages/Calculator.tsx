@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonInput, IonItem, IonLabel } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonInput, IonItem, IonButtons, IonBackButton, IonLabel } from '@ionic/react';
 import './Calculator.css';
 
 const Calculator: React.FC = () => {
@@ -21,14 +21,13 @@ const Calculator: React.FC = () => {
     }
   };
 
-  const goBack = () => {
-    window.location.href = '/';
-  };
-
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
+        <IonButtons slot='start'>
+        <IonBackButton defaultHref="/ion-t-acuzar/home" />
+           </IonButtons>
           <IonTitle>Calculator</IonTitle>
         </IonToolbar>
       </IonHeader>
@@ -60,7 +59,6 @@ const Calculator: React.FC = () => {
           <IonButton onClick={() => appendToDisplay('+')}>+</IonButton>
           <IonButton onClick={() => appendToDisplay('.')}>.</IonButton>
         </div>
-        <IonButton onClick={goBack}>Back</IonButton>
       </IonContent>
     </IonPage>
   );

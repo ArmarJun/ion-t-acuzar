@@ -44,8 +44,8 @@ const Profile: React.FC = () => {
         </IonHeader>
         
         <IonCard>
-          <img alt="Silhouette of mountains" id="cover_pic" onClick={toggleModal_coverpic} src="../src/assets/img/Cover Photo.png" />
-          <img alt="Silhouette of mountains" id="profile_pic" onClick={toggleModal_profpic} src="../src/assets/img/Profile Picture.png" />  
+          <img alt="Silhouette of mountains" id="cover_pic" onClick={toggleModal_coverpic} src="src/assets/img/Cover Photo.png" />
+          <img alt="Silhouette of mountains" id="profile_pic" onClick={toggleModal_profpic} src="src/assets/img/Profile Picture.png" />  
 
           <IonCardHeader>
             <IonCardTitle>Armar Jun P. Acuzar</IonCardTitle>
@@ -124,7 +124,7 @@ const Profile: React.FC = () => {
             id="modal_cover_pic"
             className="custom-modal"
           >
-            <img alt="Silhouette of mountains" id="coverpic" src="../src/assets/img/retouch_2024032321531715.jpg" />
+            <img alt="Silhouette of mountains" id="coverpic" src="src/assets/img/Cover Photo.png" />
             <IonButton color="light" id="modal_coverpic_close_button" onClick={() => setShowModal_coverpic(false)}>X</IonButton>
           </IonModal>
           
@@ -135,7 +135,7 @@ const Profile: React.FC = () => {
             className="custom-modal"
           >
             {/* <img alt="Silhouette of mountains" src="../src/assets/img/HENHEN_JPG.jpg" /> */}
-            <img alt="Silhouette of mountains" id="profpic" src="../src/assets/img/ArmarJun (2).jpg" />
+            <img alt="Silhouette of mountains" id="profpic" src="src/assets/img/Profile Picture.png" />
             <IonButton color="light" id="modal_profpic_close_button" onClick={() => setShowModal_profpic(false)}>X</IonButton>
           </IonModal>
 

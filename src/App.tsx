@@ -45,74 +45,45 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route exact path="/">
-            <Redirect to="/home" />
+          <Route exact path="/ion-t-acuzar/">
+            <Redirect to="/ion-t-acuzar/home" />
           </Route>
-          <Route exact path="/home">
+          <Route exact path="/ion-t-acuzar/home">
             <Home />
           </Route>
 
-          {/* 
-          <Route exact path="/profile">
-            <Profile />
-          </Route>
-          <Route exact path="/click_counter">
-            <Click_counter />
-          </Route>
-          */}
-          <Route path="/calculator">
+          <Route path="/ion-t-acuzar/calculator">
             <Calculator />
           </Route>
 
-          <Route exact path="/click_counter">
+          <Route exact path="/ion-t-acuzar/click_counter">
             <Click_counter />
           </Route>
 
-          <Route exact path="/to_do_list">
+          <Route exact path="/ion-t-acuzar/to_do_list">
             < To_do_list />
           </Route>
 
-          <Route exact path="/qoutes_generator">
+          <Route exact path="/ion-t-acuzar/qoutes_generator">
             < Qoutes_Generator />
           </Route>
 
-          <Route path="/notes">
+          <Route path="/ion-t-acuzar/notes">
             <Notes />
           </Route>
 
-          <Route exact path="/profile">
+          <Route exact path="/ion-t-acuzar/profile">
             <Profile />
           </Route>
 
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
-          <IonTabButton tab="home" href="/home">
+          <IonTabButton tab="home" href="/ion-t-acuzar/home">
             <IonIcon aria-hidden="true" icon={home} />
             <IonLabel>Home</IonLabel>
           </IonTabButton>
-          
-          {/*
-          <IonTabButton tab="profile" href="/profile">
-            <IonIcon aria-hidden="true" icon={personCircleOutline} />
-            <IonLabel>Profile</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="click_counter" href="/click_counter">
-            <IonIcon aria-hidden="true" icon={fingerPrintOutline} />
-            <IonLabel>Click Counter</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="calculator" href="/calculator">
-            <IonIcon aria-hidden="true" icon={calculatorOutline} />
-            <IonLabel>Calculator</IonLabel>
-          </IonTabButton>
-        */}
 
-          <IonTabButton tab="tab4" href="/tab4">
-            <IonIcon aria-hidden="true" icon={closeOutline} />
-            <IonLabel>Blank</IonLabel>
-          </IonTabButton>
-
-          
-          <IonTabButton tab="profile" href="/profile">
+       <IonTabButton tab="profile" href="/ion-t-acuzar/profile">
             <IonIcon aria-hidden="true" icon={personCircleOutline} />
             <IonLabel>Profile</IonLabel>
           </IonTabButton>
