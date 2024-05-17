@@ -17,11 +17,36 @@ const Home: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredCards = [
-    { id: 'card1', title: 'Click counter', imageUrl: '../src/assets/img/Click Counter.gif', onClick: () => history.push('/ion-t-acuzar/click_counter') },
-    { id: 'card2', title: 'Calculator', imageUrl: '../src/assets/img/Calculator.gif', onClick: () => history.push('/ion-t-acuzar/calculator') },
-    { id: 'card3', title: 'Todo List', imageUrl: '../src/assets/img/Todolist.gif', onClick: () => history.push('/ion-t-acuzar/to_do_list') },
-    { id: 'card4', title: 'Qoutes Generator', imageUrl: '../src/assets/img/Quote_Generator.gif', onClick: () => history.push('/ion-t-acuzar/qoutes_generator') },
-    { id: 'card5', title: 'Notes', imageUrl: '../src/assets/img/notes_icon.png', onClick: () => history.push('/ion-t-acuzar/notes') },
+    {
+      id: 'card1',
+      title: 'Click counter',
+      imageUrl: 'https://raw.githubusercontent.com/ArmarJun/ion-t-acuzar/deploy/src/assets/img/Click%20Counter.gif',
+      onClick: () => history.push('/ion-t-acuzar/click_counter')
+    },
+    {
+      id: 'card2',
+      title: 'Calculator',
+      imageUrl: 'https://raw.githubusercontent.com/ArmarJun/ion-t-acuzar/deploy/src/assets/img/Calculator.gif',
+      onClick: () => history.push('/ion-t-acuzar/calculator')
+    },
+    {
+      id: 'card3',
+      title: 'Todo List',
+      imageUrl: 'https://raw.githubusercontent.com/ArmarJun/ion-t-acuzar/deploy/src/assets/img/Todolist.gif',
+      onClick: () => history.push('/ion-t-acuzar/to_do_list')
+    },
+    {
+      id: 'card4',
+      title: 'Quotes Generator',
+      imageUrl: 'https://raw.githubusercontent.com/ArmarJun/ion-t-acuzar/deploy/src/assets/img/Quote_Generator.gif',
+      onClick: () => history.push('/ion-t-acuzar/quotes_generator')
+    },
+    {
+      id: 'card5',
+      title: 'Notes',
+      imageUrl: 'https://raw.githubusercontent.com/ArmarJun/ion-t-acuzar/deploy/src/assets/img/notes_icon.png',
+      onClick: () => history.push('/notes')
+    }
   ].filter(card => card.title.toLowerCase().includes(searchQuery.toLowerCase()));
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
